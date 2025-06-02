@@ -1,28 +1,38 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
-import Laptops from './pages/Laptops'
-import Phones from './pages/Phones'
-import Printers from './pages/Printers'
-import ProductDetails from './pages/ProductDetails'
-import ShoppingCart from './pages/ShoppingCart'
-import Navbar from './components/ui/Navbar'
-import Footer from './components/ui/Footer'
+import Product from './pages/Product'
+import About from './components/About'
+import Cart from './components/Cart'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import { CartProvider } from './components/context/CartContext'
 import './App.css'
+
+// Wrapper component to provide navigate prop and other page-specific props to Product
+const ProductPageRoute = ({ title, category }) => {
+  const navigate = useNavigate();
+  return <Product title={title} category={category} navigate={navigate} />;
+};
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/laptops" element={<Laptops />} />
-        <Route path="/phones" element={<Phones />} />
-        <Route path="/printers" element={<Printers />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/laptops" element={<ProductPageRoute title="Laptops" category="laptop" />} />
+          <Route path="/phones" element={<ProductPageRoute title="Phones" category="phone" />} />
+          <Route path="/printers" element={<ProductPageRoute title="Printers" category="printer" />} />
+          {/*<Route path="/product/:id" element={<ProductDetails />} />  Route for product details */}
+          <Route path="/cart" element={<Cart />} />
+          {/*<Route path="/checkout" element={<Checkout />} />*/}
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Footer />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </Router>
   )
 }
