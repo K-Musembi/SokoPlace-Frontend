@@ -7,12 +7,12 @@ function Navbar() {
 
   const navLinks = (
     <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/laptops">Laptops</Link></li>
-      <li><Link to="/phones">Phones</Link></li>
-      <li><Link to="/printers">Printers</Link></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/contact">Contact</Link></li>
+      <li><Link to="/" className="text-primary">Home</Link></li>
+      <li><Link to="/laptops" className="text-primary">Laptops</Link></li>
+      <li><Link to="/phones" className="text-primary">Phones</Link></li>
+      <li><Link to="/printers" className="text-primary">Printers</Link></li>
+      <li><Link to="/about" className="text-primary">About</Link></li>
+      {/*<li><Link to="/contact" className="text-primary">Contact</Link></li>*/}
     </>
   );
 
@@ -29,7 +29,7 @@ function Navbar() {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl font-bold">SokoPlace</Link>
+        <Link to="/" className="btn btn-ghost normal-case text-xl font-bold text-primary">SokoPlace</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -46,7 +46,7 @@ function Navbar() {
               <span className="badge badge-sm badge-primary indicator-item">{getCartItemCount}</span>
             )}
           </div>
-          <span className="ml-1 hidden sm:inline">Cart</span>
+          <span className="ml-1 hidden sm:inline text-primary">Cart</span>
         </Link>
       </div>
     </div>

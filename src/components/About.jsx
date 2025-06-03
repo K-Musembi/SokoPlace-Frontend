@@ -4,13 +4,13 @@ const About = () => {
         <div className="py-12 bg-base-200">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-bold">About SokoPlace</h2>
-                    <p className="text-lg text-base-content/80 mt-2">Your one-stop shop for the latest tech.</p>
+                    <h2 className="text-4xl font-bold tracking-tight text-primary">About SokoPlace</h2>
+                    <p className="text-lg text-primary mt-2 leading-relaxed">Your one-stop shop for the latest tech.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="About SokoPlace" className="rounded-lg shadow-lg mx-auto md:mx-0" />
+                        <img src="https://images.pexels.com/photos/3807747/pexels-photo-3807747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="About SokoPlace - Commercial Printer" className="rounded-lg shadow-lg mx-auto md:mx-0 object-cover h-80 w-full md:h-full" />
                     </div>
                     <div className="prose lg:prose-lg text-base-content/90">
                         <p>Welcome to SokoPlace! We are passionate about bringing you the best and latest in technology, from high-performance laptops and cutting-edge smartphones to reliable printers and essential accessories.</p>
