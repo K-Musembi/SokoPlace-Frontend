@@ -2,11 +2,11 @@ import axios from 'axios'
 
 // JavaScript enables ASI - automatic semicolon insertion
 
-const API_BASE = 'http://localhost:8080/api'
+const API_BASE = 'http://localhost:8080/api/v1'
 
-export const fetchProduct = async (productName) => {
+export const fetchProduct = async (sku) => {
   try {
-    const res = await axios.get(`${API_BASE}/product/${productName}`)
+    const res = await axios.get(`${API_BASE}/products/${sku}`)
     return res.data
   } catch (error) {
     console.error(`Failed to load ${data.name}:`, error)
@@ -23,12 +23,27 @@ export const fetchProductDetails = async (id) => {
     throw error
   }
 }
-export const fetchCart = async (userId) => {
+
+export const createOrder = async (formData) => {
+  const email = formData.email;
+  const name = email.split("@")[0];
+  const orderData = { name, email }
+
+  let userId;
+
   try {
-    const res = await axios.get(`${API_BASE}/cart/${userId}`)
-    return res.data
+    const response = await axios.post(`${API_BASE}/customers`, orderData);
+    userId = response.data.id;
+  } catch {
+    console.error('User already exists:', error)
+    throw error;
+  }
+  
+  try {
+    const res = await axios.get(`${API_BASE}/orders/${userId}`);
+    return res.data;
   } catch (error) {
-    console.error('Failed to load cart:', error)
-    throw error
+    console.error('Failed to load cart:', error);
+    throw error;
   }
 }
