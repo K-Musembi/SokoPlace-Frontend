@@ -4,9 +4,9 @@ import axios from 'axios'
 
 const API_BASE = 'http://localhost:8080/api/v1'
 
-export const fetchProduct = async (sku) => {
+export const fetchProduct = async (productName) => {
   try {
-    const res = await axios.get(`${API_BASE}/products/${sku}`)
+    const res = await axios.get(`${API_BASE}/products/category/${productName}`)
     return res.data
   } catch (error) {
     console.error(`Failed to load ${data.name}:`, error)

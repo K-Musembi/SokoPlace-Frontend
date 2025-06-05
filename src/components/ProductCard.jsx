@@ -5,7 +5,7 @@ const ProductCard = ({ product, navigate }) => {
   const {
     id,
     name = 'Product Name',
-    imageUrl = "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    imageUrl, // Remove default imageUrl
     description = 'An excellent choice for your needs, offering great value and performance.',
     price = 0.00
   } = product || {};
@@ -21,12 +21,12 @@ const ProductCard = ({ product, navigate }) => {
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out flex flex-col h-full">
-      <figure 
+      <figure
         className="px-6 pt-6 h-60 bg-white rounded-t-lg cursor-pointer"
         onClick={() => navigate && id ? navigate(`/product/${id}`) : null} // Navigate to product details if navigate and id exist
       >
         <img
-          src={imageUrl}
+          src={imageUrl || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"} // Use placeholder if imageUrl is not provided
           alt={name}
           className="h-full w-full object-contain rounded-md"
         />

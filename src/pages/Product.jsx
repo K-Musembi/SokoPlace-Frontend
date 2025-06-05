@@ -61,7 +61,11 @@ const Product = ({ title, category, navigate }) => {
           {products.map((product) => (
             <ProductCard
               key={product.id || product.name}
-              product={product}
+              product={{
+                ...product,
+                name: `${product.brand} ${product.model}`,
+                price: product.price,
+              }}
               navigate={navigate}
             />
           ))}
