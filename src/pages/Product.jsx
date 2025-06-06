@@ -60,12 +60,8 @@ const Product = ({ title, category, navigate }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <ProductCard
-              key={product.id || product.name}
-              product={{
-                ...product,
-                name: `${product.brand} ${product.model}`,
-                price: product.price,
-              }}
+              key={product.id}
+              product={product}
               navigate={navigate}
             />
           ))}

@@ -24,7 +24,7 @@ const Cart = () => {
     <div className="p-4 bg-base-100 shadow-lg rounded-lg">
       <h2 className="text-3xl font-bold mb-6 text-center">Your Shopping Cart</h2>
       <div className="space-y-4">
-        {items.map(item => (
+        {cartItems.map(item => (
           <div 
             key={item.id} 
             className="flex flex-col sm:flex-row justify-between items-center p-4 border border-base-300 rounded-lg bg-base-200"
@@ -57,7 +57,7 @@ const Cart = () => {
                 min="0"
               />
               <button
-                onClick={() => onRemoveItem(item.id)}
+                onClick={() => removeFromCart(item.id)} // Use context function
                 className="btn btn-outline btn-error btn-sm" // Use context function
               >
                 Remove

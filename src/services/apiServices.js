@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 // JavaScript enables ASI - automatic semicolon insertion
-
-const API_BASE = 'http://localhost:8080/api/v1'
+const API_BASE = 'http://localhost:8080/api/v1';
 
 export const fetchProduct = async (productName) => {
   try {
