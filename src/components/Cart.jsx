@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from './context/CartContext'; // Import the useCart hook
+const IMAGE_URL_BASE = 'http://localhost:8080';
 
 const Cart = () => {
   // Consume the cart context directly
@@ -21,44 +22,44 @@ const Cart = () => {
   }
 
   return (
-    <div className="p-4 bg-base-100 shadow-lg rounded-lg">
+    <div className="my-8 mx-auto max-w-[600px] p-4 bg-base-100 shadow-lg rounded-lg">
       <h2 className="text-3xl font-bold mb-6 text-center">Your Shopping Cart</h2>
       <div className="space-y-4">
         {cartItems.map(item => (
           <div 
-            key={item.id} 
+            key={item.Id} 
             className="flex flex-col sm:flex-row justify-between items-center p-4 border border-base-300 rounded-lg bg-base-200"
           >
             <div className="flex items-center mb-4 sm:mb-0 flex-grow">
               <img 
-                src={item.imageUrl || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"} 
-                alt={item.name} 
+                src={`${IMAGE_URL_BASE}${item.imageUrl}`} 
+                alt={item.model} 
                 className="w-20 h-20 object-contain rounded mr-4 bg-white p-1"
               />
               <div className="flex-grow">
-                <h3 className="text-lg font-semibold">{item.name || 'Product Name'}</h3>
-                <p className="text-sm text-base-content/70">${parseFloat(item.price).toFixed(2)}</p>
+                <h3 className="text-lg font-semibold">{item.brand} {item.model}</h3>
+                <p className="text-sm text-base-content/70">ksh. {parseFloat(item.price).toFixed(2)}</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-2 sm:space-x-3">
-              <label htmlFor={`quantity-${item.id}`} className="sr-only">Quantity for {item.name}</label>
+              <label htmlFor={`quantity-${item.Id}`} className="sr-only">Quantity for {item.model}</label>
               <input
-                id={`quantity-${item.id}`}
+                id={`quantity-${item.Id}`}
                 type="number"
                 value={item.quantity}
                 onChange={(e) => {
                   const newQuantity = parseInt(e.target.value, 10);
                   if (newQuantity >= 0) { 
-                    updateQuantity(item.id, newQuantity); // Use context function
+                    updateQuantity(item.Id, newQuantity); // Use context function
                   }
                 }}
                 className="input input-bordered w-20 text-center"
                 min="0"
               />
               <button
-                onClick={() => removeFromCart(item.id)} // Use context function
-                className="btn btn-outline btn-error btn-sm" // Use context function
+                onClick={() => removeFromCart(item.Id)} // Use context function
+                className="btn btn-outline btn-error btn-sm"
               >
                 Remove
               </button>
@@ -69,7 +70,7 @@ const Cart = () => {
       <div className="mt-8 pt-6 border-t border-base-300">
         <div className="flex justify-between items-center text-2xl font-bold mb-6">
           <p>Total:</p>
-          <p>${getCartTotal.toFixed(2)}</p> {/* Use context total */}
+          <p>ksh. {getCartTotal.toFixed(2)}</p> {/* Use context total */}
         </div>
         <button className="btn btn-primary btn-block text-lg">
           Proceed to Checkout

@@ -20,7 +20,7 @@ const ProductCard = ({ product, navigate }) => {
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out flex flex-col h-full">
       <figure
         className="px-6 pt-6 h-60 bg-white rounded-t-lg cursor-pointer"
-        onClick={() => navigate && product.id ? navigate(`/product/${product.id}`) : null} // Navigate to product details if navigate and product.id exist
+        onClick={() => navigate && product.Id ? navigate(`/product/${product.Id}`) : null} // Navigate to product details if navigate and product.id exist
       >
         <img
           src={imageUrl} alt={product.brand} className="h-full w-full object-contain rounded-md"

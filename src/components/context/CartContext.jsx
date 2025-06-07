@@ -35,11 +35,14 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   const addToCart = useCallback((product) => {
+    // This line was added for debugging. The problem was solved
+    console.log("Product data received by addToCart:", product);
+
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
+      const existingItem = prevItems.find((item) => item.Id === product.Id);
       if (existingItem) {
         return prevItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.Id === product.Id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
       return [...prevItems, { ...product, quantity: 1 }];
@@ -47,16 +50,16 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const removeFromCart = useCallback((productId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId));
+    setCartItems((prevItems) => prevItems.filter((item) => item.Id !== productId));
   }, []);
 
   const updateQuantity = useCallback((productId, quantity) => {
     setCartItems((prevItems) => {
       if (quantity <= 0) {
-        return prevItems.filter((item) => item.id !== productId);
+        return prevItems.filter((item) => item.Id !== productId);
       }
       return prevItems.map((item) =>
-        item.id === productId ? { ...item, quantity: quantity } : item
+        item.Id === productId ? { ...item, quantity: quantity } : item
       );
     });
   }, []);
