@@ -1,4 +1,3 @@
-
 const Hero = () => {
   return (
     <div
@@ -15,7 +14,7 @@ const Hero = () => {
           <p className="mb-5 text-lg leading-relaxed">
             For the best laptops, smart phones and printers in town. Fast and easy checkout process. Convenient and secure payment options.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <a href="#featured-laptops" className="btn btn-primary">Start Shopping</a>
         </div>
       </div>
     </div>

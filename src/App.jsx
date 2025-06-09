@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Product from './pages/Product'
 import About from './components/About'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { CartProvider } from './components/context/CartContext'
@@ -27,7 +28,7 @@ function App() {
           <Route path="/printers" element={<ProductPageRoute title="Printers" category="printer" />} />
           {/*<Route path="/product/:id" element={<ProductDetails />} />*/}
           <Route path="/cart" element={<Cart />} />
-          {/*<Route path="/checkout" element={<Checkout />} />*/}
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Footer />} />
         </Routes>

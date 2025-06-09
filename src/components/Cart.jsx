@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCart } from './context/CartContext'; // Import the useCart hook
+import { useNavigate } from 'react-router-dom';
 const IMAGE_URL_BASE = 'http://localhost:8080';
 
 const Cart = () => {
@@ -10,7 +11,8 @@ const Cart = () => {
     updateQuantity, 
     getCartTotal, 
     clearCart // Add clearCart if you want a button for it
-  } = useCart();
+  } = useCart()
+  const navigate = useNavigate()
 
   if (!cartItems || cartItems.length === 0) {
     return (
@@ -72,7 +74,7 @@ const Cart = () => {
           <p>Total:</p>
           <p>ksh. {getCartTotal.toFixed(2)}</p> {/* Use context total */}
         </div>
-        <button className="btn btn-primary btn-block text-lg">
+        <button onClick={() => navigate('/checkout')} className="btn btn-primary btn-block text-lg">
           Proceed to Checkout
         </button>
         {/* Optional: Clear Cart Button */}
